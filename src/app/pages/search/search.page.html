@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Find a Movie</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-input
+          label="Movie title"
+          labelPlacement="floating"
+          [(ngModel)]="searchTerm"
+          (keyup.enter)="searchMovies()">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-top" (click)="searchMovies()">
+        Search
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div class="loading-box" *ngIf="isLoading">
+    <ion-spinner></ion-spinner>
+    <p>Searching movies...</p>
+  </div>
+
+  <ion-list *ngIf="movies.length > 0">
+
+    <ion-card *ngFor="let movie of movies">
+
+      <div class="movie-card">
+
+        <div class="poster-box">
+          <img *ngIf="movie.poster" [src]="movie.poster" alt="Movie poster">
+          <div *ngIf="!movie.poster" class="no-poster">
+            No Poster
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <h2>{{ movie.title }}</h2>
+          <p *ngIf="movie.year">Year: {{ movie.year }}</p>
+          <p *ngIf="movie.cast">Cast: {{ movie.cast }}</p>
+
+          <ion-button size="small" (click)="viewDetails(movie)">
+            View Details
+          </ion-button>
+
+          <ion-button size="small" color="success" (click)="addToWatchlist(movie)">
+            Add to Watchlist
+          </ion-button>
+        </div>
+
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+  <ion-card *ngIf="hasSearched && !isLoading && movies.length === 0">
+    <ion-card-content>
+      No movies found. Try another search.
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

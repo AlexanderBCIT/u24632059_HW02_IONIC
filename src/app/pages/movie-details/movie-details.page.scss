@@ -1,0 +1,87 @@
+ion-toolbar {
+  --background: #090909;
+  --color: #ffffff;
+}
+
+ion-title {
+  font-weight: 800;
+}
+
+ion-card {
+  max-width: 540px;
+  margin: 18px auto;
+  overflow: hidden;
+}
+
+.poster-container {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 8px;
+  background: linear-gradient(180deg, rgba(245, 197, 24, 0.12), transparent);
+}
+
+.poster-container img {
+  width: 190px;
+  max-height: 290px;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7);
+}
+
+.no-poster {
+  width: 190px;
+  height: 290px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2b2b2b, #111111);
+  color: var(--filmlog-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+ion-card-header {
+  text-align: center;
+}
+
+ion-card-title {
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+ion-card-subtitle {
+  margin-top: 8px;
+  color: var(--filmlog-accent);
+  font-weight: 600;
+}
+
+ion-card-content p {
+  color: var(--filmlog-muted);
+  line-height: 1.45;
+}
+
+ion-card-content strong {
+  color: #ffffff;
+}
+
+ion-button {
+  margin-top: 12px;
+  height: 44px;
+}
+
+ion-button[color="primary"] {
+  --background: var(--filmlog-accent);
+  --color: #000000;
+}
+
+ion-button[color="success"] {
+  --background: var(--filmlog-success);
+  --color: #000000;
+}
+
+ion-button[fill="clear"] {
+  --color: var(--filmlog-muted);
+}

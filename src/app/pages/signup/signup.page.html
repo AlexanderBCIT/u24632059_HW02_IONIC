@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="auth-container">
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Join FilmLog</ion-card-title>
+        <ion-card-subtitle>Create your movie tracking account</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-item>
+  <ion-input
+    label="Email"
+    labelPlacement="floating"
+    type="email"
+    inputmode="email"
+    autocomplete="email"
+    [(ngModel)]="email">
+  </ion-input>
+</ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Password"
+            labelPlacement="floating"
+            type="password"
+            [(ngModel)]="password">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-input
+            label="Confirm Password"
+            labelPlacement="floating"
+            type="password"
+            [(ngModel)]="confirmPassword">
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" class="ion-margin-top" (click)="signup()">
+          Sign Up
+        </ion-button>
+
+        <ion-button expand="block" fill="clear" (click)="goToLogin()">
+          Already have an account? Log in
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

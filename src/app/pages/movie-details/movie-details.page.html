@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Movie Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngIf="movie">
+
+    <div class="poster-container">
+      <img *ngIf="movie.poster" [src]="movie.poster" alt="Movie poster">
+
+      <div *ngIf="!movie.poster" class="no-poster">
+        No Poster Available
+      </div>
+    </div>
+
+    <ion-card-header>
+      <ion-card-title>{{ movie.title }}</ion-card-title>
+      <ion-card-subtitle *ngIf="movie.year">
+        Released: {{ movie.year }}
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <p *ngIf="movie.cast">
+        <strong>Cast:</strong> {{ movie.cast }}
+      </p>
+
+      <p *ngIf="movie.timesWatched && movie.timesWatched > 0">
+        <strong>Times Watched:</strong> {{ movie.timesWatched }}
+      </p>
+
+      <ion-button expand="block" color="primary" (click)="addToWatchlist()">
+        Add to Watchlist
+      </ion-button>
+
+      <ion-button expand="block" color="success" (click)="markAsWatched()">
+        Mark as Watched
+      </ion-button>
+
+      <ion-button expand="block" fill="clear" (click)="goBack()">
+        Back 
+      </ion-button>
+
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card *ngIf="!movie">
+    <ion-card-header>
+      <ion-card-title>Movie Not Found</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>This movie could not be loaded.</p>
+
+      <ion-button expand="block" (click)="goBack()">
+        Back to search
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

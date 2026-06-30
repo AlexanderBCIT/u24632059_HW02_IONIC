@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Watchlist</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngIf="watchlist.length === 0">
+    <ion-card-header>
+      <ion-card-title>No movies yet</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Your Watchlist is empty. Search for movies and add them here.</p>
+
+      <ion-button expand="block" routerLink="/tabs/search">
+        Search Movies
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="watchlist.length > 0">
+
+    <ion-card *ngFor="let movie of watchlist">
+
+      <div class="movie-card">
+
+        <div class="poster-box">
+          <img *ngIf="movie.poster" [src]="movie.poster" alt="Movie poster">
+
+          <div *ngIf="!movie.poster" class="no-poster">
+            No Poster
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <h2>{{ movie.title }}</h2>
+
+          <p *ngIf="movie.year">
+            Year: {{ movie.year }}
+          </p>
+
+          <p *ngIf="movie.cast">
+            Cast: {{ movie.cast }}
+          </p>
+
+          <ion-button size="small" (click)="viewDetails(movie)">
+            View Details
+          </ion-button>
+
+          <ion-button size="small" color="success" (click)="markAsWatched(movie)">
+            Mark as Watched
+          </ion-button>
+
+          <ion-button size="small" color="danger" (click)="removeFromWatchlist(movie)">
+            Remove
+          </ion-button>
+        </div>
+
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>

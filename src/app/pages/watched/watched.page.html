@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Watched Movies</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card *ngIf="watchedList.length === 0">
+    <ion-card-header>
+      <ion-card-title>No watched movies yet</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Your Watched List is empty. Mark movies as watched from your Watchlist or Movie Details page.</p>
+
+      <ion-button expand="block" routerLink="/tabs/watchlist">
+        Go to Watchlist
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list *ngIf="watchedList.length > 0">
+
+    <ion-card *ngFor="let movie of watchedList">
+
+      <div class="movie-card">
+
+        <div class="poster-box">
+          <img *ngIf="movie.poster" [src]="movie.poster" alt="Movie poster">
+
+          <div *ngIf="!movie.poster" class="no-poster">
+            No Poster
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <h2>{{ movie.title }}</h2>
+
+          <p *ngIf="movie.year">
+            Year: {{ movie.year }}
+          </p>
+
+          <p *ngIf="movie.cast">
+            Cast: {{ movie.cast }}
+          </p>
+
+          <p>
+            <strong>Times Watched:</strong> {{ movie.timesWatched || 1 }}
+          </p>
+
+          <ion-button size="small" (click)="viewDetails(movie)">
+            View Details
+          </ion-button>
+
+          <ion-button size="small" color="warning" (click)="resetMovie(movie)">
+            Reset
+          </ion-button>
+
+          <ion-button size="small" color="danger" (click)="removeFromWatchedList(movie)">
+            Remove
+          </ion-button>
+        </div>
+
+      </div>
+
+    </ion-card>
+
+  </ion-list>
+
+</ion-content>
